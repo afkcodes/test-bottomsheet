@@ -3,14 +3,15 @@ import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/
 import * as React from 'react';
 import { useColorScheme } from 'react-native';
 import { COLORS } from '~config/config';
-import Home from '~screens/Home/Home';
 import News from '~screens/News/News';
 import Search from '~screens/Search/Search';
 import Settings from '~screens/Settings/Settings';
 import { globalStyles } from '~styles/global';
 import { tabBarIconSelector } from '~utils/utils';
+import HomeStackNavigator from './StackNavigators/HomeStackNavigator';
 
 const Tab = createBottomTabNavigator();
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -37,7 +38,7 @@ export default function AppNavigator() {
           tabBarLabelStyle: globalStyles.tabBarLabelStyles
         })}
       >
-        <Tab.Screen options={{ headerShown: false }} name="Home" component={Home} />
+        <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeStackNavigator} />
         <Tab.Screen options={{ headerShown: false }} name="Search" component={Search} />
         <Tab.Screen options={{ headerShown: false }} name="News" component={News} />
         <Tab.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
