@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-  Home: undefined;
+  HomeScreen: undefined;
   Favorites: undefined;
   Feed: { sort: 'latest' | 'top' } | undefined;
 };

@@ -11,7 +11,7 @@ import RadioList from '~components/RadioList/RadioList';
 import Recently from '~components/Recently/Recently';
 import Main from '~screens/Main';
 
-type favoriteScreenProp = NativeStackNavigationProp<RootStackParamList, 'Home'>;
+type favoriteScreenProp = NativeStackNavigationProp<RootStackParamList, 'HomeScreen'>;
 const Home = () => {
   const navigation = useNavigation<favoriteScreenProp>();
   return (
@@ -31,5 +31,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// const styles = StyleSheet.create({});

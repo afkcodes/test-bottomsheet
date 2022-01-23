@@ -1,30 +1,25 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import { useColorScheme } from 'react-native';
+import { StatusBar } from 'react-native';
 import { COLORS } from '~config/config';
 import News from '~screens/News/News';
 import Search from '~screens/Search/Search';
 import Settings from '~screens/Settings/Settings';
+import useStore from '~states/useStore';
 import { globalStyles } from '~styles/global';
-import { tabBarIconSelector } from '~utils/utils';
+import { MbDark, MbLight, tabBarIconSelector } from '~utils/utils';
 import HomeStackNavigator from './StackNavigators/HomeStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: COLORS.primary[900]
-  }
-};
-
 export default function AppNavigator() {
-  const scheme = useColorScheme();
+  const theme = useStore((state) => state.theme);
+  StatusBar.setBackgroundColor(theme === 'dark' ? COLORS.dark[900] : COLORS.dark[50]);
+  StatusBar.setBarStyle(theme === 'dark' ? 'light-content' : 'dark-content');
 
   return (
-    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : MyTheme}>
+    <NavigationContainer theme={theme === 'dark' ? MbDark : MbLight}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) =>
@@ -34,7 +29,10 @@ export default function AppNavigator() {
               size
             }),
           tabBarActiveTintColor: COLORS.primary[900],
-          tabBarInactiveTintColor: COLORS.dark[600],
+          tabBarInactiveTintColor: theme === 'dark' ? 'rgb(177,179,180)' : COLORS.dark[600],
+          tabBarStyle: {
+            borderTopColor: 'transparent'
+          },
           tabBarLabelStyle: globalStyles.tabBarLabelStyles
         })}
       >

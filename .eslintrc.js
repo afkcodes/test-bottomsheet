@@ -20,7 +20,6 @@ module.exports = {
             destructuring: 'all'
           }
         ],
-        'arrow-body-style': [2, 'as-needed'],
         'no-unused-expressions': [
           2,
           {

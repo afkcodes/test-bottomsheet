@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '~config/config';
 
 export const styles = StyleSheet.create({
   touchableStyles: {
@@ -19,7 +18,6 @@ export const styles = StyleSheet.create({
     display: 'flex',
     height: 90,
     width: '90%',
-    backgroundColor: '#EEEEEE',
     alignSelf: 'flex-end',
     borderRadius: 8,
     justifyContent: 'center'
@@ -38,9 +36,8 @@ export const styles = StyleSheet.create({
     height: 80
   },
 
-  recentlyTitleContainer: {
+  listTitleContainer: {
     height: 60,
-    width: 120,
     marginLeft: 50,
     display: 'flex',
     flexDirection: 'column',

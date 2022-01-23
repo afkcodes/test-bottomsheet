@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import MbText from '~components/shared/MbText/MbText';
+import MbView from '~components/shared/MbView/MbView';
 import { globalStyles } from '~styles/global';
 import { styles } from './discover.styles';
 
@@ -8,11 +10,11 @@ const Discover = () => (
   <TouchableOpacity
     activeOpacity={0.8}
     onPress={() => {
-      console.log('opac');
+      // console.log('opac');
     }}
   >
     <View style={styles.mainContainer}>
-      <View style={styles.posterContainer}>
+      <MbView style={styles.posterContainer}>
         <FastImage
           style={styles.imageStyles}
           source={{
@@ -21,8 +23,8 @@ const Discover = () => (
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
-      </View>
-      <Text style={[globalStyles.textStyle, styles.titleStyle]}>Kadak Radio</Text>
+      </MbView>
+      <MbText style={[globalStyles.textStyle, styles.titleStyle]}>Kadak Radio</MbText>
     </View>
   </TouchableOpacity>
 );
