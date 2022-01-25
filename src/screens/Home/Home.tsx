@@ -5,7 +5,7 @@ import { Button } from 'react-native';
 import { Text } from 'react-native-svg';
 import Artist from '~components/Artist/Artist';
 import Discover from '~components/Discover/Discover';
-import { RootStackParamList } from '~components/Navigator/StackNavigators/types';
+import { RootStackParamList } from '~components/Navigator/TabNavigators/types';
 import Popular from '~components/Popular/Popular';
 import RadioList from '~components/RadioList/RadioList';
 import Recently from '~components/Recently/Recently';
@@ -17,15 +17,15 @@ const Home = () => {
   const navigation = useNavigation<favoriteScreenProp>();
   return (
     <Main>
+      <SearchBar />
       <Discover />
       <Popular />
-      <Artist />
       <Recently />
+      <Artist />
       <RadioList />
       <Button title="hello" onPress={() => navigation.navigate('Favorites')}>
         <Text>Press here</Text>
       </Button>
-      <SearchBar />
     </Main>
   );
 };
