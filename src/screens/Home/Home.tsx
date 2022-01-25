@@ -9,6 +9,7 @@ import { RootStackParamList } from '~components/Navigator/StackNavigators/types'
 import Popular from '~components/Popular/Popular';
 import RadioList from '~components/RadioList/RadioList';
 import Recently from '~components/Recently/Recently';
+import SearchBar from '~components/SearchBar/SearchBar';
 import Main from '~screens/Main';
 
 type favoriteScreenProp = NativeStackNavigationProp<RootStackParamList, 'HomeScreen'>;
@@ -16,16 +17,15 @@ const Home = () => {
   const navigation = useNavigation<favoriteScreenProp>();
   return (
     <Main>
-      <>
-        <Discover />
-        <Popular />
-        <Artist />
-        <Recently />
-        <RadioList />
-        <Button title="hello" onPress={() => navigation.navigate('Favorites')}>
-          <Text>Press here</Text>
-        </Button>
-      </>
+      <Discover />
+      <Popular />
+      <Artist />
+      <Recently />
+      <RadioList />
+      <Button title="hello" onPress={() => navigation.navigate('Favorites')}>
+        <Text>Press here</Text>
+      </Button>
+      <SearchBar />
     </Main>
   );
 };

@@ -1,5 +1,5 @@
-import React, { ReactChild } from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import React, { ReactElement } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
   layoutStyles: {
@@ -9,9 +9,8 @@ const styles = StyleSheet.create({
     flex: 1
   }
 });
-const Main = ({ children }: { children: ReactChild }) => (
+const Main = ({ children }: { children: ReactElement | ReactElement[] }) => (
   <>
-    <StatusBar barStyle="dark-content" />
     <View style={styles.layoutStyles}>{children}</View>
   </>
 );

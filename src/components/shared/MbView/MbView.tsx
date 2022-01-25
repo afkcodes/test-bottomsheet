@@ -7,7 +7,7 @@ const MbView = ({
   children,
   style,
   ...rest
-}: { children: ReactElement | ReactElement[]; style: any } & TextProps) => {
+}: { children: ReactElement | ReactElement[]; style?: any } & TextProps) => {
   const theme = useStore((state) => state.theme) as keyof ThemeSliceType;
   const currentThemeStyles = useStore((state) => state[theme]) as DarkOrLight;
 

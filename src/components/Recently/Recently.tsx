@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import MbText from '~components/shared/MbText/MbText';
 import MbView from '~components/shared/MbView/MbView';
@@ -25,7 +25,7 @@ const Recently = () => {
             resizeMode={FastImage.resizeMode.cover}
           />
         </MbView>
-        <MbView style={styles.recentlyTitleContainer}>
+        <View style={styles.recentlyTitleContainer}>
           <MbText numberOfLines={1} style={[globalStyles.textStyle]}>
             Kadak Radio India
           </MbText>
@@ -35,7 +35,7 @@ const Recently = () => {
           <MbText numberOfLines={1} style={[globalStyles.subTitleStyle]}>
             India
           </MbText>
-        </MbView>
+        </View>
       </MbView>
     </TouchableOpacity>
   );

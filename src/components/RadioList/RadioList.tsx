@@ -16,7 +16,7 @@ const RadioList = () => {
     >
       <View style={styles.mainContainer}>
         <MbView style={[styles.holderContainer]}>
-          <MbView style={styles.listTitleContainer}>
+          <View style={styles.listTitleContainer}>
             <MbText numberOfLines={1} style={globalStyles.textStyle}>
               Kadak Radio India
             </MbText>
@@ -26,7 +26,7 @@ const RadioList = () => {
             <MbText numberOfLines={1} style={globalStyles.subTitleStyle}>
               India
             </MbText>
-          </MbView>
+          </View>
         </MbView>
         <View style={styles.posterContainer}>
           <FastImage
