@@ -27,16 +27,16 @@ export const COLORS = {
     50: '#e7e7e7'
   },
   primary: {
-    900: '#ff6947',
-    800: '#ff7859',
-    700: '#ff876c',
-    600: '#ff967e',
-    500: '#ffa591',
-    400: '#ffb4a3',
-    300: '#ffc3b5',
-    200: '#ffd2c8',
-    100: '#ffe1da',
-    50: '#fff0ed'
+    900: '#f55f5f',
+    800: '#f66f6f',
+    700: '#f77f7f',
+    600: '#f88f8f',
+    500: '#f99f9f',
+    400: '#faafaf',
+    300: '#fbbfbf',
+    200: '#fccfcf',
+    100: '#fddfdf',
+    50: '#feefef'
   },
   secondary: {
     900: '#1d5191',

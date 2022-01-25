@@ -12,7 +12,7 @@ const MbView = ({
   const currentThemeStyles = useStore((state) => state[theme]) as DarkOrLight;
 
   return (
-    <View {...rest} style={[style, currentThemeStyles.backgroundColor]}>
+    <View {...rest} style={[currentThemeStyles.backgroundColor, style]}>
       {children}
     </View>
   );
