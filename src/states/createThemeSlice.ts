@@ -5,7 +5,7 @@ import { MyState } from './useStore';
 const createThemeSlice = (set: SetState<MyState>, get: GetState<MyState>) => ({
   theme: 'dark',
   dark: {
-    backgroundColor: { backgroundColor: 'rgb(22,22,22)' },
+    backgroundColor: { backgroundColor: 'rgb(26, 26, 26)' },
     color: { color: 'rgb(159,159,159)' }
   },
   light: {
