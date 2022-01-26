@@ -3,7 +3,7 @@ import { ThemeSliceType } from './types';
 import { MyState } from './useStore';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const createThemeSlice = (set: SetState<MyState>, get: GetState<MyState>) => ({
-  theme: 'dark',
+  theme: 'light',
   dark: {
     backgroundColor: { backgroundColor: 'rgb(26, 26, 26)' },
     color: { color: 'rgb(159,159,159)' }
