@@ -1,14 +1,17 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StatusBar } from 'react-native';
 import { COLORS } from '~config/config';
-import Favorites from '~screens/Favorites/Favorites';
+import News from '~screens/News/News';
+import Search from '~screens/Search/Search';
+import Settings from '~screens/Settings/Settings';
 import useStore from '~states/useStore';
-import { MbDark, MbLight } from '~utils/utils';
-import MainTabNavigator from './TabNavigators/MainTabNavigator';
+import { globalStyles } from '~styles/global';
+import { MbDark, MbLight, tabBarIconSelector } from '~utils/utils';
+import HomeStackNavigator from './StackNavigators/HomeStackNavigator';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
   const theme = useStore((state) => state.theme);
@@ -17,15 +20,27 @@ export default function AppNavigator() {
 
   return (
     <NavigationContainer theme={theme === 'dark' ? MbDark : MbLight}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          animation: 'slide_from_right'
-        }}
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) =>
+            tabBarIconSelector(route, {
+              focused,
+              color,
+              size
+            }),
+          tabBarActiveTintColor: COLORS.primary[900],
+          tabBarInactiveTintColor: theme === 'dark' ? 'rgb(177,179,180)' : COLORS.dark[600],
+          tabBarStyle: {
+            borderTopColor: 'transparent'
+          },
+          tabBarLabelStyle: globalStyles.tabBarLabelStyles
+        })}
       >
-        <Stack.Screen name="Main" component={MainTabNavigator} />
-        <Stack.Screen name="Favorites" component={Favorites} />
-      </Stack.Navigator>
+        <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeStackNavigator} />
+        <Tab.Screen options={{ headerShown: false }} name="Search" component={Search} />
+        <Tab.Screen options={{ headerShown: false }} name="News" component={News} />
+        <Tab.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
