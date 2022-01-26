@@ -1,26 +1,36 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBar, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import { StatusBar } from 'react-native';
+import MiniPlayer from '~components/MiniPlayer/MiniPlayer';
 import { COLORS } from '~config/config';
 import News from '~screens/News/News';
 import Search from '~screens/Search/Search';
 import Settings from '~screens/Settings/Settings';
 import useStore from '~states/useStore';
 import { globalStyles } from '~styles/global';
-import { MbDark, MbLight, tabBarIconSelector } from '~utils/utils';
+import { MbDark, MbLight, tabBarIconSelector } from '~utils/themeUtils';
 import HomeStackNavigator from './StackNavigators/HomeStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
   const theme = useStore((state) => state.theme);
-  StatusBar.setBackgroundColor(theme === 'dark' ? COLORS.dark[900] : COLORS.dark[50]);
-  StatusBar.setBarStyle(theme === 'dark' ? 'light-content' : 'dark-content');
+  const isDarkTheme = theme === 'dark';
+
+  StatusBar.setBackgroundColor(isDarkTheme ? 'rgba(0, 0, 0, 0.3)' : COLORS.dark[50]);
+  StatusBar.setBarStyle(isDarkTheme ? 'light-content' : 'dark-content');
+  // StatusBar.setTranslucent(true);
 
   return (
-    <NavigationContainer theme={theme === 'dark' ? MbDark : MbLight}>
+    <NavigationContainer theme={isDarkTheme ? MbDark : MbLight}>
       <Tab.Navigator
+        tabBar={(tabsProps) => (
+          <>
+            <MiniPlayer />
+            <BottomTabBar {...tabsProps} />
+          </>
+        )}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) =>
             tabBarIconSelector(route, {
@@ -29,17 +39,20 @@ export default function AppNavigator() {
               size
             }),
           tabBarActiveTintColor: COLORS.primary[900],
-          tabBarInactiveTintColor: theme === 'dark' ? 'rgb(177,179,180)' : COLORS.dark[600],
+          tabBarInactiveTintColor: isDarkTheme ? 'rgb(159,159,150)' : COLORS.dark[600],
           tabBarStyle: {
-            borderTopColor: 'transparent'
+            borderTopColor: isDarkTheme ? COLORS.dark[700] : 'transparent',
+            backgroundColor: isDarkTheme ? '#000' : '#fff'
           },
-          tabBarLabelStyle: globalStyles.tabBarLabelStyles
+          tabBarLabelStyle: globalStyles.tabBarLabelStyles,
+          headerShown: false,
+          tabBarHideOnKeyboard: true
         })}
       >
-        <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeStackNavigator} />
-        <Tab.Screen options={{ headerShown: false }} name="Search" component={Search} />
-        <Tab.Screen options={{ headerShown: false }} name="News" component={News} />
-        <Tab.Screen options={{ headerShown: false }} name="Settings" component={Settings} />
+        <Tab.Screen name="Home" component={HomeStackNavigator} />
+        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="News" component={News} />
+        <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
   );

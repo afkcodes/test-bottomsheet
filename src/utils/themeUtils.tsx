@@ -41,6 +41,7 @@ export const tabBarIconSelector = (
     );
   }
 };
+
 export const MbLight = {
   ...DefaultTheme,
   colors: {
@@ -59,8 +60,9 @@ export const MbDark = {
   colors: {
     ...DarkTheme.colors,
     primary: COLORS.primary[900],
-    text: 'rgb(177,179,180)',
+    text: 'rgb(159,159,159)',
     card: 'rgb(26, 26, 26)',
-    border: 'rgb(51, 51, 51)'
+    border: 'rgb(51, 51, 51)',
+    background: '#000000'
   }
 };

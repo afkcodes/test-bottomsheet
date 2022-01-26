@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextProps } from 'react-native';
-import { DarkOrLight, ThemeSliceType } from '~states/types';
+import { DarkOrLight, ThemeSliceType } from '~states/themeSlice/types';
 import useStore from '~states/useStore';
 
 const MbText = ({ children, style, ...rest }: { children: string; style: any } & TextProps) => {
