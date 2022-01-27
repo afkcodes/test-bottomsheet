@@ -1,9 +1,9 @@
-import { GetState, SetState } from 'zustand';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ThemeSliceType } from './types';
-import { MyState } from './useStore';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const createThemeSlice = (set: SetState<MyState>, get: GetState<MyState>) => ({
-  theme: 'light',
+import { StoreSlice } from '../useStore';
+
+const createThemeSlice: StoreSlice<ThemeSliceType> = (set, get) => ({
+  theme: 'dark',
   dark: {
     backgroundColor: { backgroundColor: 'rgb(26, 26, 26)' },
     color: { color: 'rgb(159,159,159)' }
