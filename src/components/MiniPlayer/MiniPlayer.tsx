@@ -1,19 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import MbText from '~components/shared/MbText/MbText';
 import useStore from '~states/useStore';
+import { globalStyles } from '~styles/global';
 import { styles } from './miniplayer.styles';
 
 const MiniPlayer = () => {
-  const keyboardState = useStore((state) => state.keyboardState);
-  // console.log(keyboardState);
-
-  const miniPlayerHideStyles = keyboardState
-    ? styles.miniPlayerHideStyles
-    : styles.miniPlayerContainer;
+  const currentTheme = useStore((state) => state.theme);
+  const miniPlayerStyle = currentTheme === 'dark' ? styles.miniPlayerDark : styles.miniPlayerLight;
 
   return (
-    <View style={[miniPlayerHideStyles]}>
-      <Text>this is a miniplayer</Text>
+    <View style={[styles.miniPlayerContainer, miniPlayerStyle]}>
+      <MbText style={[globalStyles.textStyle]}>this is a miniplayer</MbText>
     </View>
   );
 };
