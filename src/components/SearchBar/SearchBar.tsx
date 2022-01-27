@@ -1,9 +1,9 @@
 import { SearchNormal1, CloseSquare } from 'iconsax-react-native';
-import React, { useState } from 'react';
-import { TextInput, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Keyboard, TextInput, TouchableOpacity } from 'react-native';
 import MbView from '~components/shared/MbView/MbView';
 import { COLORS } from '~config/config';
-import { DarkOrLight, ThemeSliceType } from '~states/types';
+import { DarkOrLight, ThemeSliceType } from '~states/themeSlice/types';
 import useStore from '~states/useStore';
 import { styles } from './searchbar.styles';
 
@@ -13,6 +13,21 @@ const SearchBar = () => {
   const theme = useStore((state) => state.theme) as keyof ThemeSliceType;
   const currentThemeStyles = useStore((state) => state[theme]) as DarkOrLight;
   const color = theme === 'dark' ? 'rgb(177,179,180)' : COLORS.dark[600];
+
+  const setKeyBoardState = useStore((state) => state.setIsKeyboardOpen);
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyBoardState(true);
+    });
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyBoardState(false);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, [setKeyBoardState]);
 
   const onClear = () => {
     searchRef.current?.clear();

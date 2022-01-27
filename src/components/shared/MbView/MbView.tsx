@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { TextProps, View } from 'react-native';
-import { DarkOrLight, ThemeSliceType } from '~states/types';
+import { DarkOrLight, ThemeSliceType } from '~states/themeSlice/types';
 import useStore from '~states/useStore';
 
 const MbView = ({
