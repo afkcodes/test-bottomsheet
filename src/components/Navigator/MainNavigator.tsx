@@ -18,7 +18,7 @@ export default function AppNavigator() {
   const theme = useStore((state) => state.theme);
   const isDarkTheme = theme === 'dark';
 
-  StatusBar.setBackgroundColor(isDarkTheme ? 'rgba(0, 0, 0, 0.3)' : COLORS.dark[50]);
+  StatusBar.setBackgroundColor(isDarkTheme ? 'rgb(0, 0, 0)' : COLORS.dark[50]);
   StatusBar.setBarStyle(isDarkTheme ? 'light-content' : 'dark-content');
   // StatusBar.setTranslucent(true);
 
@@ -41,12 +41,12 @@ export default function AppNavigator() {
           tabBarActiveTintColor: COLORS.primary[900],
           tabBarInactiveTintColor: isDarkTheme ? 'rgb(159,159,150)' : COLORS.dark[600],
           tabBarStyle: {
-            borderTopColor: isDarkTheme ? COLORS.dark[700] : 'transparent',
-            backgroundColor: isDarkTheme ? '#000' : '#fff'
+            borderTopColor: 'transparent',
+            backgroundColor: isDarkTheme ? '#000' : '#fff',
+            elevation: 3
           },
           tabBarLabelStyle: globalStyles.tabBarLabelStyles,
-          headerShown: false,
-          tabBarHideOnKeyboard: true
+          headerShown: false
         })}
       >
         <Tab.Screen name="Home" component={HomeStackNavigator} />
